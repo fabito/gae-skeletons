@@ -13,6 +13,10 @@
 	<name>Appengine java project with Spark Micro Web Framework</name>
 	<url>http://maven.apache.org</url>
 
+	<properties>
+		<sl4j-version>1.7.6</sl4j-version>
+	</properties>
+
 	<dependencies>
 		<!-- Compile/runtime dependencies -->
 		<dependency>
@@ -38,7 +42,24 @@
 					<artifactId>jetty-webapp</artifactId>
 					<groupId>org.eclipse.jetty</groupId>
 				</exclusion>
+				<exclusion>
+					<artifactId>org.slf4j</artifactId>
+					<groupId>slf4j-api</groupId>
+				</exclusion>
 			</exclusions>
+
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${sl4j-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-jdk14</artifactId>
+			<version>${sl4j-version}</version>
 		</dependency>
 
 		<!-- Test Dependencies -->
