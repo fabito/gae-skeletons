@@ -1,4 +1,4 @@
-package com.ciandt.cocacola.gaevanillajersey;
+package com.github.fabito.jersey;
 
 import java.util.HashSet;
 import java.util.Set;

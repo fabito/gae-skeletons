@@ -1,4 +1,4 @@
-package com.ciandt.cocacola.gaevanillajersey;
+package com.github.fabito.jersey;
 
 public class Foo {
 
