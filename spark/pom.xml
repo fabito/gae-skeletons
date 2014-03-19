@@ -8,7 +8,7 @@
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>appengine-spark</artifactId>
+	<artifactId>spark</artifactId>
 	<packaging>war</packaging>
 	<name>Appengine java project with Spark Micro Web Framework</name>
 	<url>http://maven.apache.org</url>
