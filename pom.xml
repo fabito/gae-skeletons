@@ -44,6 +44,9 @@
 		<build.output.dir>${project.build.directory}/classes</build.output.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+		<guice-version>3.0</guice-version>
+
 	</properties>
 
 	<build>
@@ -177,18 +180,22 @@
 				<artifactId>appengine-api-1.0-sdk</artifactId>
 				<version>${appengine.target.version}</version>
 			</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-labs</artifactId>
-			<version>${appengine.target.version}</version>
-		</dependency>			
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-labs</artifactId>
+				<version>${appengine.target.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>servlet-api</artifactId>
 				<version>2.5</version>
 				<scope>provided</scope>
 			</dependency>
-
+			<dependency>
+				<groupId>javax.inject</groupId>
+				<artifactId>javax.inject</artifactId>
+				<version>1</version>
+			</dependency>
 			<dependency>
 				<groupId>com.googlecode.objectify</groupId>
 				<artifactId>objectify</artifactId>
@@ -204,6 +211,19 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
+
+
+			<dependency>
+				<groupId>com.google.inject.extensions</groupId>
+				<artifactId>guice-servlet</artifactId>
+				<version>${guice-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.inject</groupId>
+				<artifactId>guice</artifactId>
+				<version>${guice-version}</version>
+			</dependency>
+
 			<!-- Test Dependencies -->
 			<dependency>
 				<groupId>junit</groupId>
