@@ -159,6 +159,7 @@
 
 	<modules>
 		<module>spark</module>
+		<module>spark-guice</module>
 		<module>jersey-guice</module>
 	</modules>
 
