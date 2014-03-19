@@ -8,43 +8,11 @@
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>jersey-guice-objectify</artifactId>
+	<artifactId>jersey</artifactId>
 	<packaging>war</packaging>
 	<name>Pure Jersey Google Appengine Webapp</name>
-	
-	<properties>
-		<appengine.app.version>vanillajersey</appengine.app.version>
-		<jackson-mapper-asl.version>1.9.12</jackson-mapper-asl.version>
-	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-1.0-sdk</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-labs</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-endpoints</artifactId>
-			<version>${appengine.target.version}</version>
-			<scope>compile</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>com.google.appengine</groupId>
-					<artifactId>appengine-api-1.0-sdk</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
 		<!-- Compile/runtime dependencies -->
 		<dependency>
 			<groupId>com.googlecode.objectify</groupId>
@@ -60,30 +28,16 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
-		<dependency>
-			<groupId>com.google.inject.extensions</groupId>
-			<artifactId>guice-servlet</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
-		</dependency>
-				
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-core</artifactId>
+
 		</dependency>
 
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-servlet</artifactId>
-		</dependency>
 
-		<dependency>
-			<groupId>com.sun.jersey.contribs</groupId>
-			<artifactId>jersey-guice</artifactId>
-			<version>${jersey-version}</version>
 		</dependency>
 
 		<dependency>
@@ -95,22 +49,32 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
+
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-testing</artifactId>
+
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-stubs</artifactId>
+
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<properties>
+		<jersey-version>1.18.1</jersey-version>
+		<jackson-mapper-asl.version>1.9.12</jackson-mapper-asl.version>
+	</properties>
+
 </project>
