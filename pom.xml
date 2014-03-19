@@ -1,187 +1,326 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.sonatype.oss</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>7</version>
-  </parent>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 
-  <groupId>com.github.fabito</groupId>
-  <artifactId>gae-skeletons</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+	<groupId>com.github.fabito</groupId>
+	<artifactId>gae-skeletons</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-  <name>gae-skeletons</name>
-  <description>Google AppEngine project template skeletons</description>
-  <url>https://github.com/fabito/gae-skeletons/</url>
+	<name>gae-skeletons</name>
+	<description>Google AppEngine project template skeletons</description>
+	<url>https://github.com/fabito/gae-skeletons/</url>
 
-  <licenses>
-    <license>
-      <name>Apache License 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-    </license>
-  </licenses>
+	<licenses>
+		<license>
+			<name>Apache License 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
 
-  <scm>
-    <connection>scm:git:git@github.com/fabito/gae-skeletons.git</connection>
-    <developerConnection>scm:git:git@github.com/fabito/gae-skeletons.git</developerConnection>
-    <url>https://github.com/togglz/togglz</url>
-    <tag>HEAD</tag>
-  </scm>
+	<scm>
+		<connection>scm:git:git@github.com/fabito/gae-skeletons.git</connection>
+		<developerConnection>scm:git:git@github.com/fabito/gae-skeletons.git</developerConnection>
+		<url>https://github.com/togglz/togglz</url>
+		<tag>HEAD</tag>
+	</scm>
 
-  <issueManagement>
-    <system>github</system>
-    <url>https://github.com/fabito/gae-skeletons/issues</url>
-  </issueManagement>
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/fabito/gae-skeletons/issues</url>
+	</issueManagement>
 
 	<properties>
 		<appengine.target.version>1.9.0</appengine.target.version>
+
+		<!-- Build properties -->
+		<build.output.dir>${project.build.directory}/classes</build.output.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
-  <build>
-    <plugins>
+	<build>
+		<plugins>
 
-      <!-- Release -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-release-plugin</artifactId>
-        <version>2.3.2</version>
-        <configuration>
-          <pushChanges>false</pushChanges>
-          <localCheckout>true</localCheckout>
-          <autoVersionSubmodules>true</autoVersionSubmodules>
-          <tagNameFormat>@{project.version}</tagNameFormat>
-        </configuration>
-      </plugin>
+			<!-- Release -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<pushChanges>false</pushChanges>
+					<localCheckout>true</localCheckout>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<tagNameFormat>@{project.version}</tagNameFormat>
+				</configuration>
+			</plugin>
 
-      <!-- Javadocs -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.8.1</version>
-        <configuration>
-          <links>
-            <link>http://docs.oracle.com/javase/6/docs/api/</link>
-            <link>http://docs.oracle.com/javaee/6/api/</link>
-          </links>
-        </configuration>
-        <executions>
-          <execution>
-            <id>aggregate</id>
-            <phase>site</phase>
-            <goals>
-              <goal>aggregate</goal>
-            </goals>
-          </execution>
-        </executions>
-     </plugin>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>src/main/webapp/WEB-INF/classes</directory>
+						</fileset>
+						<fileset>
+							<directory>src/main/webapp/WEB-INF/lib</directory>
+						</fileset>
+						<fileset>
+							<directory>src/main/webapp/WEB-INF</directory>
+							<includes>
+								<include>*.discovery</include>
+								<include>*.api</include>
+							</includes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
 
-	<plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-war-plugin</artifactId>
-		<version>2.3</version>
-		<configuration>
-			<archiveClasses>true</archiveClasses>
-		</configuration>
-	</plugin>
-	<plugin>
-		<groupId>com.google.appengine</groupId>
-		<artifactId>appengine-maven-plugin</artifactId>
-		<version>${appengine.target.version}</version>
-	</plugin>
+			<!-- Javadocs -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.8.1</version>
+				<configuration>
+					<links>
+						<link>http://docs.oracle.com/javase/6/docs/api/</link>
+						<link>http://docs.oracle.com/javaee/6/api/</link>
+					</links>
+				</configuration>
+				<executions>
+					<execution>
+						<id>aggregate</id>
+						<phase>site</phase>
+						<goals>
+							<goal>aggregate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 
-    </plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<archiveClasses>true</archiveClasses>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
+				<version>${appengine.target.version}</version>
+			</plugin>
 
-    <pluginManagement>
-      <plugins>
+		</plugins>
 
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>2.5.1</version>
-          <configuration>
-			<source>1.7</source>
-			<target>1.7</target>
-          </configuration>
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.7</version>
-        </plugin>
-
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.12</version>
-        </plugin>
-
-      </plugins>
-    </pluginManagement>
+		<pluginManagement>
+			<plugins>
 
 
-  </build>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
 
-  <modules>
-    <module>spark</module>
-  </modules>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.7</version>
+				</plugin>
 
-  <developers>
-    <developer>
-      <id>fabito</id>
-      <email>fabio.uechi@gmail.com</email>
-      <name>Fábio Franco Uechi</name>
-      <timezone>GMT-3</timezone>
-    </developer>
-  </developers>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.12</version>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
 
 
-  <dependencyManagement>	
-<dependencies>
-		<!-- Compile/runtime dependencies -->
+	</build>
+
+	<modules>
+		<module>spark</module>
+		<module>jersey-guice</module>
+	</modules>
+
+	<developers>
+		<developer>
+			<id>fabito</id>
+			<email>fabio.uechi@gmail.com</email>
+			<name>Fábio Franco Uechi</name>
+			<timezone>GMT-3</timezone>
+		</developer>
+	</developers>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Compile/runtime dependencies -->
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-1.0-sdk</artifactId>
+				<version>${appengine.target.version}</version>
+			</dependency>
 		<dependency>
 			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-1.0-sdk</artifactId>
+			<artifactId>appengine-api-labs</artifactId>
 			<version>${appengine.target.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
-		<!-- Test Dependencies -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.9.5</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-testing</artifactId>
-			<version>${appengine.target.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-stubs</artifactId>
-			<version>${appengine.target.version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+		</dependency>			
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
+				<scope>provided</scope>
+			</dependency>
 
-  </dependencyManagement>
+			<dependency>
+				<groupId>com.googlecode.objectify</groupId>
+				<artifactId>objectify</artifactId>
+				<version>4.0</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.google.appengine</groupId>
+						<artifactId>appengine-api-labs</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.google.appengine</groupId>
+						<artifactId>appengine-api-1.0-sdk</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!-- Test Dependencies -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>1.9.5</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-testing</artifactId>
+				<version>${appengine.target.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-stubs</artifactId>
+				<version>${appengine.target.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+
+	</dependencyManagement>
+
+	<profiles>
+
+		<profile>
+			<!-- profile to configure eclipse correctly. -->
+			<id>m2e</id>
+			<activation>
+				<property>
+					<name>m2e.version</name>
+				</property>
+			</activation>
+
+			<build>
+				<plugins>
+
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.7</version>
+						<executions>
+							<execution>
+								<phase>process-classes</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<property name="target.webapp.dir"
+											value="${project.build.directory}/${project.build.finalName}" />
+										<property name="src.webapp.dir" value="${basedir}/src/main/webapp" />
+
+										<sync verbose="true" todir="${target.webapp.dir}"
+											includeEmptyDirs="true">
+											<fileset dir="${src.webapp.dir}" />
+											<preserveintarget>
+												<include name="WEB-INF/lib/**" />
+												<include name="WEB-INF/classes/**" />
+												<include name="WEB-INF/appengine-generated/**" />
+											</preserveintarget>
+										</sync>
+										<sync verbose="true" todir="${target.webapp.dir}/WEB-INF/classes">
+											<fileset dir="${basedir}/target/classes" />
+										</sync>
+
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+
+				<pluginManagement>
+					<plugins>
+						<!-- This plugin's configuration is used to store Eclipse m2e settings 
+							only. It has no influence on the Maven build itself. -->
+						<plugin>
+							<groupId>org.eclipse.m2e</groupId>
+							<artifactId>lifecycle-mapping</artifactId>
+							<version>1.0.0</version>
+							<configuration>
+								<lifecycleMappingMetadata>
+									<pluginExecutions>
+										<pluginExecution>
+											<pluginExecutionFilter>
+												<groupId>org.apache.maven.plugins</groupId>
+												<artifactId>maven-antrun-plugin</artifactId>
+												<versionRange>[1.6,)</versionRange>
+												<goals>
+													<goal>run</goal>
+												</goals>
+											</pluginExecutionFilter>
+											<action>
+												<execute>
+													<runOnIncremental>true</runOnIncremental>
+												</execute>
+											</action>
+										</pluginExecution>
+									</pluginExecutions>
+								</lifecycleMappingMetadata>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+
+	</profiles>
+
 
 </project>
