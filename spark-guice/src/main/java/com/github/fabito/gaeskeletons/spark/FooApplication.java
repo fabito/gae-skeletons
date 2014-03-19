@@ -6,15 +6,15 @@ import spark.Route;
 
 import static spark.Spark.*;
 
-public class Application implements spark.servlet.SparkApplication {
+public class FooApplication implements spark.servlet.SparkApplication {
 
 	@Override
 	public void init() {
 
-		get(new Route("/") {
+		get(new Route("/foos") {
 			@Override
 			public Object handle(Request request, Response response) {
-				return "Hello World!";
+				return "Hello Foo World!";
 			}
 		});
 		

@@ -1,22 +1,19 @@
 package com.github.fabito.gaeskeletons.spark;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
+
+import javax.inject.Inject;
 
 import spark.servlet.SparkApplication;
 
 public class CompositeSparkApplication implements SparkApplication {
 	
-	private List<SparkApplication> sparkApplications;
+	private Set<SparkApplication> sparkApplications;
 
-	public CompositeSparkApplication(List<SparkApplication> sparkApplications) {
+	@Inject
+	public CompositeSparkApplication(Set<SparkApplication> sparkApplications) {
 		super();
 		this.sparkApplications = sparkApplications;
-	}
-
-	public CompositeSparkApplication(SparkApplication... sparkApplications) {
-		super();
-		this.sparkApplications = Arrays.asList(sparkApplications);
 	}
 	
 	@Override
