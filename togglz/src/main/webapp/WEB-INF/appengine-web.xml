@@ -8,4 +8,9 @@
 		<property name="java.util.logging.config.file" value="WEB-INF/logging.properties" />
 		<property name="org.togglz.DISABLE_JNDI_LOOKUPS" value="true" />
 	</system-properties>
+	
+	<admin-console>
+		<page name="Feature Toggles" url="/_ah/togglz/index" />
+	</admin-console>
+	
 </appengine-web-app>
