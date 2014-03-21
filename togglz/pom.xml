@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>com.github.fabito</groupId>
+		<artifactId>gae-skeletons</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>togglz</artifactId>
+	<packaging>war</packaging>
+	<name>Appengine java project with Togglz</name>
+
+	<properties>
+		<sl4j-version>1.7.6</sl4j-version>
+		<togglz-version>2.1.0-SNAPSHOT</togglz-version>
+	</properties>
+
+	<dependencies>
+		<!-- Compile/runtime dependencies -->
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-1.0-sdk</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+		  <groupId>org.togglz</groupId>
+		  <artifactId>togglz-core</artifactId>
+		  <version>${togglz-version}</version>
+		</dependency>
+		
+		<dependency>
+		  <groupId>org.togglz</groupId>
+		  <artifactId>togglz-servlet</artifactId>
+		  <version>${togglz-version}</version>
+		</dependency>
+		
+		<!-- Togglz for Servlet environments (mandatory for webapps) -->
+		<dependency>
+		  <groupId>org.togglz</groupId>
+		  <artifactId>togglz-appengine</artifactId>
+		  <version>${togglz-version}</version>
+		</dependency>
+		
+		<!-- Togglz for Servlet environments (mandatory for webapps) -->
+		<dependency>
+		  <groupId>org.togglz</groupId>
+		  <artifactId>togglz-console</artifactId>
+		  <version>${togglz-version}</version>
+		</dependency>
+
+		<!-- Test Dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-testing</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-stubs</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

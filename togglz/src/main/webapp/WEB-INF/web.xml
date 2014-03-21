@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.5"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<context-param>
+		<param-name>org.togglz.core.manager.TogglzConfig</param-name>
+		<param-value>com.github.fabito.gaeskeletons.togglz.MyTogglzConfiguration</param-value>
+	</context-param>
+
+	<!-- Togglz configuration for Servlet 2.5 and earlier -->
+	<filter>
+		<filter-name>TogglzFilter</filter-name>
+		<filter-class>org.togglz.servlet.TogglzFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>TogglzFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+	  <servlet-name>TogglzConsoleServlet</servlet-name>
+	  <servlet-class>org.togglz.console.TogglzConsoleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	  <servlet-name>TogglzConsoleServlet</servlet-name>
+	  <url-pattern>/_ah/togglz/*</url-pattern>
+	</servlet-mapping>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name></web-resource-name>
+			<url-pattern>/_ah/togglz/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+</web-app>
