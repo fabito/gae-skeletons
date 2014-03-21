@@ -166,7 +166,8 @@
 		<module>spark-guice</module>
 		<module>jersey-guice</module>
 		<module>jersey</module>
-		
+
+		<module>jersey-spring</module>
 	</modules>
 
 	<developers>
