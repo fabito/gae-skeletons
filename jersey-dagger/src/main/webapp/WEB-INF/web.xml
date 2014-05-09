@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.5"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<listener>
+		<listener-class>com.github.fabito.jdo.config.DaggerServletConfig</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>Dagger Filter</filter-name>
+		<filter-class>com.leacox.dagger.servlet.DaggerFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>Dagger Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>

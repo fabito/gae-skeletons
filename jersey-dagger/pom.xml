@@ -1,0 +1,118 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<parent>
+		<groupId>com.github.fabito</groupId>
+		<artifactId>gae-skeletons</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>jersey-dagger-objectify</artifactId>
+	<packaging>war</packaging>
+	<name>Pure Jersey Google Appengine Webapp</name>
+
+	<properties>
+		<appengine.app.version>vanillajersey</appengine.app.version>
+		<jackson-mapper-asl.version>1.9.12</jackson-mapper-asl.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-1.0-sdk</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-labs</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Compile/runtime dependencies -->
+		<dependency>
+			<groupId>com.googlecode.objectify</groupId>
+			<artifactId>objectify</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>com.google.appengine</groupId>
+					<artifactId>appengine-api-labs</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.google.appengine</groupId>
+					<artifactId>appengine-api-1.0-sdk</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.squareup.dagger</groupId>
+			<artifactId>dagger</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.dagger</groupId>
+			<artifactId>dagger-compiler</artifactId>
+			<version>1.2.1</version>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.leacox.dagger</groupId>
+			<artifactId>dagger-servlet</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.leacox.dagger</groupId>
+			<artifactId>dagger-jersey</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-servlet</artifactId>
+		</dependency>
+
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+        </dependency>
+        
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+		</dependency>
+
+		<!-- Test Dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-testing</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-stubs</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

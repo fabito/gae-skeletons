@@ -168,6 +168,7 @@
 		<module>jersey</module>
 		<module>togglz</module>
 		<module>jersey-spring</module>
+		<module>jersey-dagger</module>
 	</modules>
 
 	<developers>
@@ -246,6 +247,12 @@
 			<dependency>
 				<groupId>com.sun.jersey</groupId>
 				<artifactId>jersey-servlet</artifactId>
+				<version>${jersey-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.sun.jersey</groupId>
+				<artifactId>jersey-server</artifactId>
 				<version>${jersey-version}</version>
 			</dependency>
 
