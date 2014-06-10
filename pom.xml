@@ -44,12 +44,8 @@
 		<build.output.dir>${project.build.directory}/classes</build.output.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
 		<guice-version>3.0</guice-version>
-
-
 		<jersey-version>1.18.1</jersey-version>
-
 
 	</properties>
 
@@ -169,6 +165,8 @@
 		<module>togglz</module>
 		<module>jersey-spring</module>
 		<module>jersey-dagger</module>
+		<module>endpoints-guice</module>
+		
 	</modules>
 
 	<developers>
@@ -208,7 +206,7 @@
 			<dependency>
 				<groupId>com.googlecode.objectify</groupId>
 				<artifactId>objectify</artifactId>
-				<version>4.0</version>
+				<version>5.0.3</version>
 				<exclusions>
 					<exclusion>
 						<groupId>com.google.appengine</groupId>
@@ -220,8 +218,6 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-
-
 			<dependency>
 				<groupId>com.google.inject.extensions</groupId>
 				<artifactId>guice-servlet</artifactId>
@@ -236,6 +232,12 @@
 				<groupId>com.google.inject.extensions</groupId>
 				<artifactId>guice-multibindings</artifactId>
 				<version>${guice-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time</artifactId>
+				<version>2.3</version>
 			</dependency>
 
 			<dependency>
