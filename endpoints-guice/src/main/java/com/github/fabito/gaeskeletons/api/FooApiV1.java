@@ -35,6 +35,7 @@ public class FooApiV1 {
     @ApiMethod(path = "{tenantId}/foos", httpMethod = "POST")
     public FooResponse post(@Named("tenantId") String tenantId, Foo foo) {
     	LOGGER.info(foo.toString());
+    	repository.put(foo);
     	return new FooResponse();
     }
     
