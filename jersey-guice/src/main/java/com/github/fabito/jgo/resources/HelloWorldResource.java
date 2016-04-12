@@ -1,17 +1,31 @@
 package com.github.fabito.jgo.resources;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import com.google.common.collect.ImmutableMap;
+import com.google.inject.Singleton;
+
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("/")
+@Singleton
 public class HelloWorldResource {
 
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
-	public String get() {
-		return "Hello World!!!";
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response get(@QueryParam("q") String q) {
+		return Response.ok(ImmutableMap.of(
+                "id", "134124",
+                "name", "fabio",
+                "q", q)
+        ).build();
 	}
-	
+
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public Response getAsTxt() {
+		return Response.ok("Hello!").build();
+	}
+
 }
